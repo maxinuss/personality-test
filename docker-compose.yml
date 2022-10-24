@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  node-pt:
+    build: docker/node
+    command: bash -c "npm i && npm run start:dev"
+    container_name: node-pt-container
+    volumes:
+      - ./backend:/www
+    ports:
+      - "3401:3000"
+    networks:
+      - personality-test-network
+
+volumes:
+  node_modules:
+  data:
+    driver: "local"
+networks:
+  personality-test-network:
+    name: personality-test-network
+    driver: bridge
