@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { HealthModule } from './modules/health/health.module';
+import { PersonalityModule } from './modules/personality/personality.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    HealthModule,
+    PersonalityModule,
   ],
 })
 export class RestModule { }
