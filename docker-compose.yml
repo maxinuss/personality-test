@@ -1,14 +1,25 @@
 version: '3.7'
 
 services:
-  node-pt:
+  node-pt-back:
     build: docker/node
     command: bash -c "npm i && npm run start:dev"
-    container_name: node-pt-container
+    container_name: node-pt-back-container
     volumes:
       - ./backend:/www
     ports:
       - "3401:3000"
+    networks:
+      - personality-test-network
+
+  node-pt-front:
+    build: docker/node
+    command: bash -c "npm start"
+    container_name: node-pt-front-container
+    volumes:
+      - ./frontend:/www
+    ports:
+      - "4401:3001"
     networks:
       - personality-test-network
 
