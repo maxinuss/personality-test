@@ -1,0 +1,130 @@
+[{
+  "id": 1,
+  "title": "You’re really busy at work and a colleague is telling you their life story and personal woes. You:",
+  "answers": [
+    {
+      "text": "Don’t dare to interrupt them",
+      "id": 1,
+      "score": 3
+    },
+    {
+      "text": "Think it’s more important to give them some of your time; work can wait",
+      "id": 2,
+      "score": 2
+    },
+    {
+      "text": "Listen, but with only with half an ear",
+      "id": 3,
+      "score": 5
+    },
+    {
+      "text": "Interrupt and explain that you are really busy at the moment",
+      "id": 4,
+      "score": 6
+    }
+  ]
+},
+{
+  "id": 2,
+  "title": "You’ve been sitting in the doctor’s waiting room for more than 25 minutes. You:",
+  "answers": [
+    {
+      "text": "Look at your watch every two minutes",
+      "id": 5,
+      "score": 3
+    },
+    {
+      "text": "Bubble with inner anger, but keep quiet",
+      "id": 6,
+      "score": 5
+    },
+    {
+      "text": "Explain to other equally impatient people in the room that the doctor is always running late",
+      "id": 7,
+      "score": 4
+    },
+    {
+      "text": "Explain to other equally impatient people in the room that the doctor is always running late",
+      "id": 8,
+      "score": 1
+    }
+  ]
+  },
+  {
+    "id": 3,
+    "title": "You’re having an animated discussion with a colleague regarding a project that you’re in charge of. You:",
+    "answers": [
+      {
+        "text": "Don’t dare contradict them",
+        "id": 9,
+        "score": 3
+      },
+      {
+        "text": "Think that they are obviously right",
+        "id": 10,
+        "score": 2
+      },
+      {
+        "text": "Defend your own point of view, tooth and nail",
+        "id": 11,
+        "score": 5
+      },
+      {
+        "text": "Continuously interrupt your colleague",
+        "id": 12,
+        "score": 6
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "You are taking part in a guided tour of a museum. You:\n",
+    "answers": [
+      {
+        "text": "Are a bit too far towards the back so don’t really hear what the guide is saying",
+        "id": 13,
+        "score": 3
+      },
+      {
+        "text": "Follow the group without question",
+        "id": 14,
+        "score": 2
+      },
+      {
+        "text": "Make sure that everyone is able to hear properly",
+        "id": 15,
+        "score": 5
+      },
+      {
+        "text": "Are right up the front, adding your own comments in a loud voice",
+        "id": 16,
+        "score": 6
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "During dinner parties at your home, you have a hard time with people who:",
+    "answers": [
+      {
+        "text": "Ask you to tell a story in front of everyone else",
+        "id": 17,
+        "score": 3
+      },
+      {
+        "text": "Talk privately between themselves",
+        "id": 18,
+        "score": 2
+      },
+      {
+        "text": "Hang around you all evening",
+        "id": 19,
+        "score": 5
+      },
+      {
+        "text": "Always drag the conversation back to themselves",
+        "id": 20,
+        "score": 6
+      }
+    ]
+  }]

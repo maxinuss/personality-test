@@ -32,3 +32,4 @@ logs
 .env
 
 /test/coverage
+/test/coverage-e2e
