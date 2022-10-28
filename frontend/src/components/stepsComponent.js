@@ -12,6 +12,7 @@ const steps = ['Welcome', 'Questions', 'Result'];
 export default function StepsComponent() {
     const [activeStep, setActiveStep] = React.useState(0);
     const [selectedAnswers, setSelectedAnswers] = React.useState([]);
+    const [testResult, setTestResult] = React.useState(null);
 
     const handleSelectedAnswer = (questionId, answerId) => {
         selectedAnswers[questionId] = answerId;
@@ -25,15 +26,16 @@ export default function StepsComponent() {
             const filteredAnswers = selectedAnswers.filter(function (el) {
                 return el != null;
             });
+
             axios.post('http://localhost:3401/personality/', {
                 answers: filteredAnswers.join(',')
             })
-                .then(function (response) {
-                    console.log(response);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+            .then(function (response) {
+                setTestResult(response.data.personality);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         }
     };
 
@@ -73,7 +75,7 @@ export default function StepsComponent() {
             />) : ''}
 
             {activeStep === 2 ? (<StepComponent
-                content={'You area a person: '}
+                content={`Your result is: ${testResult}`}
                 steps={steps}
                 activeStep={activeStep}
                 handleNext={handleNext}
