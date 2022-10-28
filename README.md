@@ -46,6 +46,7 @@ It is a plus if you write some unit-tests.
 * Wait until app is ready. You can check it using ```make logs``` (```docker-compose logs -f```)
 * If you didn't change .env default values the frontend will be accessible in: ```http://localhost:4401```
 
+*** First time could take like 1 minute to start.
 #### Internal / External Ports
 
 |  Service  | Internal | External |
