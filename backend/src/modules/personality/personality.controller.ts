@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, Get } from '@nestjs/common';
 import { PersonalityService } from "./personality.service";
 import { ValidationPipe } from '../../common/validation.pipe';
 import { PersonalityDto } from "./personality.dto";
@@ -8,7 +8,12 @@ export class PersonalityController {
   constructor(private personalityService: PersonalityService) {}
 
   @Post('/')
-  answer(@Body(new ValidationPipe()) body: PersonalityDto) {
+  sendAnswer(@Body(new ValidationPipe()) body: PersonalityDto) {
     return this.personalityService.getPersonality(body);
+  }
+
+  @Get('/questions')
+  getQuestions() {
+    return this.personalityService.getQuestions();
   }
 }

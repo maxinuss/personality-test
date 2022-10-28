@@ -10,6 +10,7 @@ export class PersonalityService {
     private readonly database: InMemoryDbService
   ) {}
 
+  readonly QUESTIONS_QTY = 4;
   readonly INTROVERT = 'Introvert';
   readonly EXTROVERT = 'Extrovert';
 
@@ -22,6 +23,16 @@ export class PersonalityService {
       })
 
       return { personality: score > 10 ? this.EXTROVERT : this.INTROVERT };
+    } catch (error: any) {
+      this.log.error(error).then();
+
+      return error?.response;
+    }
+  }
+
+  async getQuestions() {
+    try {
+      return this.database.findQuestions(this.QUESTIONS_QTY)
     } catch (error: any) {
       this.log.error(error).then();
 

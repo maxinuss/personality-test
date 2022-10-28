@@ -16,4 +16,10 @@ export class InMemoryDbService {
 
     return result[0] || null;
   }
+
+  findQuestions(limit: number): string[] | null{
+    const shuffled = this.questions.sort(() => 0.5 - Math.random());
+
+    return shuffled.slice(0, limit) || null;
+  }
 }
