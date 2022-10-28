@@ -42,8 +42,13 @@ restart:
 .PHONY: restart
 
 ## Connect the node container
-node:
-	docker exec -it node-pt-container bash
+back:
+	docker exec -it node-pt-back-container bash
+.PHONY: node
+
+## Connect the node container
+front:
+	docker exec -it node-pt-front-container bash
 .PHONY: node
 
 ## Logs
