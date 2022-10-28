@@ -1,19 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { PersonalityDto } from './personality.dto';
 import { LogService } from '../../common/services/log.service';
+import { InMemoryDbService } from "../../common/services/inMemoryDb.service";
 
 @Injectable()
 export class PersonalityService {
   constructor(
-    private readonly log: LogService
+    private readonly log: LogService,
+    private readonly database: InMemoryDbService
   ) {}
 
   readonly INTROVERT = 'Introvert';
   readonly EXTROVERT = 'Extrovert';
 
-  async getPersonality({ answer1, answer2, answer3, answer4 }: PersonalityDto) {
+  async getPersonality({ answers }: PersonalityDto) {
     try {
-      const score =  answer1 + answer2 + answer3 + answer4;
+      let score = 0;
+      const result = this.database.findAnswerByIds(answers.split(','))
+      result?.map(answer => {
+        score = score + answer.score;
+      })
 
       return { personality: score > 10 ? this.EXTROVERT : this.INTROVERT };
     } catch (error: any) {

@@ -1,0 +1,52 @@
+[{
+  "id": 1,
+  "title": "You’re really busy at work and a colleague is telling you their life story and personal woes. You:",
+  "answers": [
+    {
+      "text": "Don’t dare to interrupt them",
+      "id": 1,
+      "score": 3
+    },
+    {
+      "text": "Think it’s more important to give them some of your time; work can wait",
+      "id": 2,
+      "score": 2
+    },
+    {
+      "text": "Listen, but with only with half an ear",
+      "id": 3,
+      "score": 5
+    },
+    {
+      "text": "Interrupt and explain that you are really busy at the moment",
+      "id": 4,
+      "score": 6
+    }
+  ]
+},
+{
+  "id": 2,
+  "title": "You’ve been sitting in the doctor’s waiting room for more than 25 minutes. You:",
+  "answers": [
+    {
+      "text": "Look at your watch every two minutes",
+      "id": 5,
+      "score": 3
+    },
+    {
+      "text": "Bubble with inner anger, but keep quiet",
+      "id": 6,
+      "score": 5
+    },
+    {
+      "text": "Explain to other equally impatient people in the room that the doctor is always running late",
+      "id": 7,
+      "score": 4
+    },
+    {
+      "text": "Explain to other equally impatient people in the room that the doctor is always running late",
+      "id": 8,
+      "score": 1
+    }
+  ]
+}]
