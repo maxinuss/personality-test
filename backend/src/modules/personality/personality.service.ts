@@ -11,6 +11,7 @@ export class PersonalityService {
   ) {}
 
   readonly QUESTIONS_QTY = 4;
+  readonly SCORE_THRESHOLD = 10;
   readonly INTROVERT = 'Introvert';
   readonly EXTROVERT = 'Extrovert';
 
@@ -22,7 +23,7 @@ export class PersonalityService {
         score = score + answer.score;
       })
 
-      return { personality: score > 10 ? this.EXTROVERT : this.INTROVERT };
+      return { personality: score > this.SCORE_THRESHOLD ? this.EXTROVERT : this.INTROVERT };
     } catch (error: any) {
       this.log.error(error).then();
 

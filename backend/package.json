@@ -19,8 +19,7 @@
     "test:e2e": "jest --coverage --runInBand --config ./jest-e2e.json",
     "test:watch": "jest --watch --runInBand",
     "test:cov": "jest --coverage --runInBand",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "install-hooks": "mkdir -p .git/hooks && cp tools/hooks/* .git/hooks && chmod -R +x .git/hooks/"
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",

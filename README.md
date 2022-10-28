@@ -40,25 +40,41 @@ It is a plus if you write some unit-tests.
 #### Instructions:
 * Clone this repo
 * Go to the repo root
-* Copy the .env.example file to .env database (default params will work)
+* Inside ```backend``` folder Copy the .env.example file to .env (default params will work)
+* Inside ```frontend``` folder Copy the .env.example file to .env (default params will work)
 * Run ```make up``` if you use Linux or Mac (if not you can run ``` docker-compose up -d```).
 * Wait until app is ready. You can check it using ```make logs``` (```docker-compose logs -f```)
+* If you didn't change .env default values the frontend will be accessible in: ```http://localhost:4401```
 
 #### Internal / External Ports
 
 |  Service  | Internal | External |
 |:---------:|:--------:|:--------:|
 | Node/Rest |   3000   |   3401   |
+|   React   |   3001   |   4401   |
 
-#### Endpoint
+#### Endpoints
+Get questions: ```GET http://localhost:3401/personality/questions```
+
+---
 Get personality: ```POST http://localhost:3401/personality/```
 
 With body:
 ```json
 {
-    "answer1": 5,
-    "answer2": 1,
-    "answer3": 2,
-    "answer4": 1
+    "answers": "1,2,3,4"
 }
 ```
+
+#### Testing
+Some E2E testing is included in backend.
+To run it execute ```make back``` (```docker exec -it node-pt-back-container bash```) and then ```npm run test:e2e```
+
+---
+#### Some improvements to do in a real world application:
+* Database instead JSON file for questions.
+* Cache, for example: Redis
+* Hooks for running linter and testing in local before commit/push
+* Pipelines configuration file (Bitbucket, Github)
+* Complete testing with some UNIT testing
+* Unified format for API responses

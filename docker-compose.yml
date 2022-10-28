@@ -14,7 +14,7 @@ services:
 
   node-pt-front:
     build: docker/node
-    command: bash -c "npm start"
+    command: bash -c "npm i && npm start"
     container_name: node-pt-front-container
     volumes:
       - ./frontend:/www
