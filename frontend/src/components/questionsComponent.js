@@ -8,7 +8,7 @@ export default function QuestionsComponent({ handleSelectedAnswer }) {
     const [questions, setQuestions] = useState([]);
     useEffect(() => {
         async function fetchData() {
-            const response = await axios.get('http://localhost:3401/personality/questions');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/personality/questions`);
             setQuestions(response.data);
         }
 
@@ -18,6 +18,7 @@ export default function QuestionsComponent({ handleSelectedAnswer }) {
     return (
         <React.Fragment>
             <Typography component={'span'} variant='h5' color={'secondary'}>Are you an introvert or an extrovert?</Typography>
+            <br />
             <br />
             {
                 questions.map((question) => {

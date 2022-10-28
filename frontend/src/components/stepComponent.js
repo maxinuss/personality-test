@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import * as React from "react";
 
-export default function StepComponent({ content, steps, activeStep, handleNext, handleReset}) {
+export default function StepComponent({ content, steps, activeStep, handleNext, handleReset, nextDisabled}) {
     return (
         <React.Fragment>
             <Typography component={'span'} sx={{mt: 2, mb: 1}}>{content}</Typography>
@@ -11,7 +11,7 @@ export default function StepComponent({ content, steps, activeStep, handleNext, 
                 <Box sx={{flex: '1 1 auto'}}/>
                 { handleReset ?
                     (<Button onClick={handleReset}>Reset</Button>) :
-                    (<Button onClick={handleNext}>
+                    (<Button onClick={handleNext} disabled={nextDisabled}>
                         {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                     </Button>)
                 }

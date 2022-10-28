@@ -1,11 +1,12 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import StepComponent from "./stepComponent";
 import QuestionsComponent from "./questionsComponent";
 import axios from "axios";
+import {Container} from "@mui/material";
+import {useEffect, useState} from "react";
 
 const steps = ['Welcome', 'Questions', 'Result'];
 
@@ -13,10 +14,19 @@ export default function StepsComponent() {
     const [activeStep, setActiveStep] = React.useState(0);
     const [selectedAnswers, setSelectedAnswers] = React.useState([]);
     const [testResult, setTestResult] = React.useState(null);
+    const [nextDisabled, setNextDisabled] = useState(false);
+
+    useEffect(() => {
+        if (activeStep === 1) setNextDisabled(true);
+    }, [activeStep])
 
     const handleSelectedAnswer = (questionId, answerId) => {
         selectedAnswers[questionId] = answerId;
         setSelectedAnswers(selectedAnswers);
+
+        if (activeStep === 1 && selectedAnswers && Object.keys(selectedAnswers).length >= 4) {
+            setNextDisabled(false)
+        }
     }
 
     const handleNext = () => {
@@ -27,7 +37,7 @@ export default function StepsComponent() {
                 return el != null;
             });
 
-            axios.post('http://localhost:3401/personality/', {
+            axios.post(`${process.env.REACT_APP_API_URL}/personality/`, {
                 answers: filteredAnswers.join(',')
             })
             .then(function (response) {
@@ -44,7 +54,7 @@ export default function StepsComponent() {
     };
 
     return (
-        <Box sx={{ width: '100%' }}>
+        <Container sx={{ width: '100%', padding: '20px' }}>
             <Stepper activeStep={activeStep}>
                 {steps.map((label, index) => {
                     const stepProps = {};
@@ -58,29 +68,33 @@ export default function StepsComponent() {
                 })}
             </Stepper>
 
-            {activeStep === 0 ? (<StepComponent
-                content={'Welcome, please answers the questions for getting your personality type'}
-                steps={steps}
-                activeStep={activeStep}
-                handleNext={handleNext}
-            />) : ''}
+            <Container fixed sx={{ width: '100%', padding: '50px' }}>
+                {activeStep === 0 ? (<StepComponent
+                    content={'Welcome, please answer the questions for getting your personality type'}
+                    steps={steps}
+                    activeStep={activeStep}
+                    handleNext={handleNext}
+                    nextDisabled={nextDisabled}
+                />) : ''}
 
-            {activeStep === 1 ? (<StepComponent
-                content={<QuestionsComponent
-                    handleSelectedAnswer={handleSelectedAnswer}
-                />}
-                steps={steps}
-                activeStep={activeStep}
-                handleNext={handleNext}
-            />) : ''}
+                {activeStep === 1 ? (<StepComponent
+                    content={<QuestionsComponent
+                        handleSelectedAnswer={handleSelectedAnswer}
+                    />}
+                    steps={steps}
+                    activeStep={activeStep}
+                    handleNext={handleNext}
+                    nextDisabled={nextDisabled}
+                />) : ''}
 
-            {activeStep === 2 ? (<StepComponent
-                content={`Your result is: ${testResult}`}
-                steps={steps}
-                activeStep={activeStep}
-                handleNext={handleNext}
-                handleReset={handleReset}
-            />) : ''}
-        </Box>
+                {activeStep === 2 ? (<StepComponent
+                    content={`Your result is: ${testResult}`}
+                    steps={steps}
+                    activeStep={activeStep}
+                    handleNext={handleNext}
+                    handleReset={handleReset}
+                />) : ''}
+            </Container>
+        </Container>
     );
 }
