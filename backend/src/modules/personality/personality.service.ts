@@ -14,10 +14,10 @@ export class PersonalityService {
   readonly INTROVERT = 'Introvert';
   readonly EXTROVERT = 'Extrovert';
 
-  async getPersonality({ answers }: PersonalityDto) {
+  async getPersonality({ answers }: PersonalityDto): Promise<object> {
     try {
       let score = 0;
-      const result = this.database.findAnswerByIds(answers.split(','))
+      const result = await this.database.findAnswerByIds(answers.split(','))
       result?.map(answer => {
         score = score + answer.score;
       })
@@ -30,7 +30,7 @@ export class PersonalityService {
     }
   }
 
-  async getQuestions() {
+  async getQuestions(): Promise<string[]|null> {
     try {
       return this.database.findQuestions(this.QUESTIONS_QTY)
     } catch (error: any) {
